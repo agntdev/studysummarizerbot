@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Upload file",
+    "steps": [
+      {
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "Send any supported study material file to trigger summarization"
+            }
+          }
+        ],
+        "send": {
+          "text": "/document"
+        }
+      }
+    ]
+  }
+]
