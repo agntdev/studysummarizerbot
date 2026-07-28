@@ -1,0 +1,20 @@
+[
+  {
+    "name": "/shorten",
+    "steps": [
+      {
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "Request shorter 1-2 sentence summary"
+            }
+          }
+        ],
+        "send": {
+          "text": "/shorten"
+        }
+      }
+    ]
+  }
+]
