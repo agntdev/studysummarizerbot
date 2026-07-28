@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Admin alerts are available from the main menu",
+    "steps": [
+      {
+        "send": { "callback": "admin:alerts" },
+        "expect": [{ "method": "editMessageText", "payload": { "text": "Admin failure alerts are off. Turn them on to get a notice after repeated failed uploads from this account." } }]
+      }
+    ]
+  }
+]

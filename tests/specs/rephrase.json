@@ -1,19 +1,10 @@
 [
   {
-    "name": "/rephrase",
+    "name": "Rephrase asks for a source summary when none exists",
     "steps": [
       {
-        "expect": [
-          {
-            "method": "sendMessage",
-            "payload": {
-              "text": "Request alternative phrasing of last summary"
-            }
-          }
-        ],
-        "send": {
-          "text": "/rephrase"
-        }
+        "send": { "callback": "summary:rephrase" },
+        "expect": [{ "method": "editMessageText", "payload": { "text": "No summary yet — send a study file first." } }]
       }
     ]
   }
