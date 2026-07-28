@@ -1,19 +1,10 @@
 [
   {
-    "name": "/shorten",
+    "name": "Shorten asks for a source summary when none exists",
     "steps": [
       {
-        "expect": [
-          {
-            "method": "sendMessage",
-            "payload": {
-              "text": "Request shorter 1-2 sentence summary"
-            }
-          }
-        ],
-        "send": {
-          "text": "/shorten"
-        }
+        "send": { "callback": "summary:shorten" },
+        "expect": [{ "method": "editMessageText", "payload": { "text": "No summary yet — send a study file first." } }]
       }
     ]
   }

@@ -1,19 +1,33 @@
 [
   {
-    "name": "Upload file",
+    "name": "Summarize-material button explains what to upload",
     "steps": [
       {
-        "expect": [
-          {
-            "method": "sendMessage",
-            "payload": {
-              "text": "Send any supported study material file to trigger summarization"
+        "send": { "callback": "document:upload" },
+        "expect": [{ "method": "editMessageText", "payload": { "text": "Send a PDF, image, DOCX, or .txt study file and I'll make a concise summary." } }]
+      }
+    ]
+  },
+  {
+    "name": "A document is acknowledged before a readable failure is shown",
+    "steps": [
+      {
+        "send": {
+          "update": {
+            "update_id": 88,
+            "message": {
+              "message_id": 88,
+              "date": 0,
+              "chat": { "id": 1, "type": "private", "first_name": "Test" },
+              "from": { "id": 1, "is_bot": false, "first_name": "Test" },
+              "document": { "file_id": "unreadable", "file_unique_id": "unreadable", "file_name": "notes.pdf", "mime_type": "application/pdf", "file_size": 100 }
             }
           }
-        ],
-        "send": {
-          "text": "/document"
-        }
+        },
+        "expect": [
+          { "method": "sendMessage", "payload": { "text": "Received — summarizing now" } },
+          { "method": "sendMessage", "payload": { "text": "I couldn't read that file from Telegram. Try uploading it again as a PDF, image, or text file." } }
+        ]
       }
     ]
   }
